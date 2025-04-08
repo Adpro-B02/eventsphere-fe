@@ -13,13 +13,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install pnpm
-        run: npm install -g pnpm
-
-      - name: Install Railway CLI (new version)
-        run: pnpm add -g @railway/cli
+      - name: Setup pnpm and install Railway CLI
+        run: |
+          npm install -g pnpm
+          pnpm setup
+          export PATH="$PNPM_HOME:$PATH"
+          pnpm add -g @railway/cli
+          railway --version  # optional: cek versi CLI
 
       - name: Deploy to Railway
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-        run: railway up
+        run: |
+          export PATH="$PNPM_HOME:$PATH"
+          railway up
