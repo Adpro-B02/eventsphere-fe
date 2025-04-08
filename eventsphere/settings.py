@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-kflr+4ja7%yk*1eq#5d@mvs=zy)j0vhcfr1ez$z^n14_0f335b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['eventsphere-fe-production.up.railway.app', 'localhost', '127.0.0.1',]
 
 
 # Application definition
@@ -43,6 +43,10 @@ INSTALLED_APPS = [
     'ticket',
     'promo',
     'review',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://eventsphere-fe-production.up.railway.app',
 ]
 
 MIDDLEWARE = [
