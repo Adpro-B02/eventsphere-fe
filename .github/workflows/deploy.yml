@@ -13,8 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Railway CLI
-        run: npm install -g railway
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install Railway CLI (new version)
+        run: pnpm add -g @railway/cli
 
       - name: Deploy to Railway
         env:
